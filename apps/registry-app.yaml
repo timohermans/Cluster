@@ -6,7 +6,7 @@ spec:
   project: default
   source:
     path: k8s/registry
-    repoURL: 'https://github.com/timohermans/cluster'
+    repoURL: 'https://github.com/timohermans/cluster.git'
     targetRevision: HEAD
   destination:
     namespace: default
