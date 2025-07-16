@@ -1,6 +1,7 @@
 resources:
   - config-map.yaml
   - sealed-secret.yaml
-  - deployment.yaml
+  - sealed-secret-db.yaml
+  - deployment.yam
   - service.yaml
   - ingress.yaml
