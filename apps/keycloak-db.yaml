@@ -11,8 +11,13 @@ spec:
     targetRevision: 16.7.9
     helm:
       releaseName: postgresql
-      valueFiles:
-        - ./k8s/keycloak/values-db.yaml
+      valuesObject:
+        global:
+          postgresql:
+            auth:
+              username: sleutelmantel
+              database: keycloak
+              existingSecret: postgres-secret
   destination:
     server: "https://kubernetes.default.svc"
     namespace: auth

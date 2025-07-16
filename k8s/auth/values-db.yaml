@@ -1,6 +1,0 @@
-global:
-  postgresql:
-    auth:
-      username: sleutelmantel
-      database: keycloak
-      existingSecret: postgres-secret
