@@ -12,7 +12,7 @@ spec:
     helm:
       releaseName: postgresql
       valueFiles:
-        - ../k8s/keycloak/values-db.yaml
+        - k8s/keycloak/values-db.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: auth
