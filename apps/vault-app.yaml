@@ -17,7 +17,7 @@ spec:
             enabled: true
             ingressClassName: traefik
             hosts:
-              - host: auth.timo-hermans.nl
+              - host: vault.timo-hermans.nl
                 paths:
                   - /
             tls:
