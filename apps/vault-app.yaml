@@ -2,12 +2,36 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: vault
+  namespace: vault
 spec:
-  destination:
-    namespace: vault
-    server: https://kubernetes.default.svc
   project: default
   source:
-    path: k8s/vault
-    repoURL: 'https://github.com/timohermans/cluster.git'
-    targetRevision: HEAD
+    chart: vault
+    repoURL: https://helm.releases.hashicorp.com
+    targetRevision: 0.30.0
+    helm:
+      releaseName: vault
+      valuesObject:
+        server:
+          ingress:
+            enabled: true
+            ingressClassName: traefik
+            hosts:
+              - host: auth.timo-hermans.nl
+                paths:
+                  - /
+            tls:
+              - hosts:
+                  - vault.timo-hermans.nl
+            annotations:
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              traefik.ingress.kubernetes.io/router.tls.certresolver: default
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: vault
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
