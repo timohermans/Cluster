@@ -44,5 +44,8 @@ spec:
         persistentVolumeClaim:
           claimName: registry-pvc
       - name: auth
-        secret:
-          secretName: registry-auth
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: vault-registry-creds
