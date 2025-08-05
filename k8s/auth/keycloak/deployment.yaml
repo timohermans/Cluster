@@ -28,5 +28,12 @@ spec:
               name: keycloak-config
           - secretRef:
               name: keycloak-vault
+        volumes:
+          - name: secret-store
+            csi:
+              driver: secrets-store.csi.k8s.io
+              readOnly: true
+              volumeAttributes:
+                secretProviderClass: keycloak-vault
         ports:
         - containerPort: 8080
