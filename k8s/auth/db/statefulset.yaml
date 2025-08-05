@@ -21,7 +21,7 @@ spec:
             - containerPort: 5432
           envFrom:
             - secretRef:
-                name: keycloak-db-vault
+                name: keycloak-db-vault-secrets
             - configMapRef:
                 name: auth-db-config-map
           volumeMounts:
@@ -30,10 +30,10 @@ spec:
       volumes:
         - name: secret-store
           csi:
-            driver: secrets-store.csi.k8s.io
+            driver: 'secrets-store.csi.k8s.io'
             readOnly: true
             volumeAttributes:
-              secretProviderClass: keycloak-db-vault
+              secretProviderClass: 'keycloak-db-vault'
   volumeClaimTemplates:
     - metadata:
         name: auth-db-pvc
