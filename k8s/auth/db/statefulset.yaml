@@ -24,16 +24,16 @@ spec:
                 name: keycloak-db-vault
             - configMapRef:
                 name: auth-db-config-map
-          volumes:
-            - name: secret-store
-              csi:
-                driver: secrets-store.csi.k8s.io
-                readOnly: true
-                volumeAttributes:
-                  secretProviderClass: keycloak-db-vault
           volumeMounts:
             - name: auth-db-pvc
               mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: secret-store
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: keycloak-db-vault
   volumeClaimTemplates:
     - metadata:
         name: auth-db-pvc
