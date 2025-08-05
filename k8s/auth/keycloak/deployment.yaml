@@ -27,6 +27,6 @@ spec:
           - configMapRef:
               name: keycloak-config
           - secretRef:
-              name: keycloak-secret
+              name: keycloak-vault
         ports:
         - containerPort: 8080
