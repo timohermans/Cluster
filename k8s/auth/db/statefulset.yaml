@@ -27,6 +27,9 @@ spec:
           volumeMounts:
             - name: auth-db-pvc
               mountPath: /var/lib/postgresql/data
+            - name: secret-store
+              mountPath: /mnt/secrets-store
+              readOnly: true
       volumes:
         - name: secret-store
           csi:
