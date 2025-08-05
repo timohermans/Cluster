@@ -30,7 +30,7 @@ spec:
                 driver: secrets-store.csi.k8s.io
                 readOnly: true
                 volumeAttributes:
-                  secretProviderClass: keycloak-vault
+                  secretProviderClass: keycloak-db-vault
           volumeMounts:
             - name: auth-db-pvc
               mountPath: /var/lib/postgresql/data
