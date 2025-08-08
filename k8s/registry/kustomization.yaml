@@ -3,5 +3,6 @@ resources:
   - secret-provider.yaml
   - pvc.yaml
   - deployment.yaml
+  - servers-transport.yaml
   - service.yaml
   - ingress.yaml

@@ -4,7 +4,7 @@ metadata:
   name: registry-ingress
   namespace: registry
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure-registry
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls.certresolver: default
 spec:
   ingressClassName: traefik

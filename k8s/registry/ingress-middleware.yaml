@@ -1,9 +1,0 @@
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: registry-timeout
-  namespace: registry
-spec:
-  timeout:
-    response: 600s     # 10 minutes
-    idle: 600s         # Optional: idle connection timeout
