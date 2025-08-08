@@ -12,7 +12,7 @@ spec:
       services:
         - name: registry
           port: 5000
-          serversTransport: registry-transport
+          # serversTransport: registry-transport
   tls:
     domains:
       - main: registry.timo-hermans.nl
