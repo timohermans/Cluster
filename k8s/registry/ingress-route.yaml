@@ -14,5 +14,6 @@ spec:
           port: 5000
           # serversTransport: registry-transport
   tls:
+    certResolver: default
     domains:
       - main: registry.timo-hermans.nl
