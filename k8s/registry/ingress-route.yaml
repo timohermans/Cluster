@@ -12,7 +12,6 @@ spec:
       services:
         - name: registry
           port: 5000
-          # serversTransport: registry-transport
   tls:
     certResolver: default
     domains:
