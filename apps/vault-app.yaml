@@ -13,6 +13,19 @@ spec:
       releaseName: vault
       valuesObject:
         server: 
+          ingress:
+            enabled: true
+            ingressClassName: traefik
+            hosts:
+              - host: vault.timo-hermans.nl
+                paths:
+                  - /
+            tls:
+              - hosts:
+                  - vault.timo-hermans.nl
+            annotations:
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              traefik.ingress.kubernetes.io/router.tls.certresolver: default
           affinity: ""
           ha:
             enabled: true
@@ -34,20 +47,6 @@ spec:
           enabled: false
         csi:
           enabled: true
-        server:
-          ingress:
-            enabled: true
-            ingressClassName: traefik
-            hosts:
-              - host: vault.timo-hermans.nl
-                paths:
-                  - /
-            tls:
-              - hosts:
-                  - vault.timo-hermans.nl
-            annotations:
-              traefik.ingress.kubernetes.io/router.entrypoints: websecure
-              traefik.ingress.kubernetes.io/router.tls.certresolver: default
   destination:
     server: "https://kubernetes.default.svc"
     namespace: vault
