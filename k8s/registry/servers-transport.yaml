@@ -5,7 +5,7 @@ metadata:
   namespace: registry
 spec:
   forwardingTimeouts:
-    dialTimeout: 60s                # time to connect to registry pod
+    dialTimeout: 0s                # time to connect to registry pod
     responseHeaderTimeout: 0s       # 0 = unlimited wait for headers
-    idleConnTimeout: 10m             # keep upstream connection alive
+    idleConnTimeout: 0s             # keep upstream connection alive
   disableHTTP2: true                 # optional: avoids some chunk upload issues
