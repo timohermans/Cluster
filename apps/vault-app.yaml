@@ -28,24 +28,6 @@ spec:
             annotations:
               traefik.ingress.kubernetes.io/router.entrypoints: websecure
               traefik.ingress.kubernetes.io/router.tls.certresolver: default
-          affinity: ""
-          ha:
-            enabled: true
-            replicas: 1
-            setNodeId: true
-            config: |
-              cluster_name = "zolder"
-              storage "raft" {
-                path = "/vault/data"
-              }
-
-              listener "tcp" {
-                address = "[::]:8200"
-                cluster_address = "[::]:8201"
-                tls_disable = 1
-              }
-
-              service_registration "kubernetes" {}
         injector:
           enabled: false
         csi:
