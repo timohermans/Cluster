@@ -14,7 +14,6 @@ spec:
       valuesObject:
         ui:
           enabled: true
-          replicas: 1
         server: 
           ingress:
             enabled: true
@@ -32,6 +31,7 @@ spec:
           affinity: ""
           ha:
             enabled: true
+            replicas: 1
             setNodeId: true
             config: |
               cluster_name = "zolder"
