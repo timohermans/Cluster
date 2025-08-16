@@ -36,5 +36,9 @@ spec:
               cpu: "250m"
           ports:
             - containerPort: 3000
+          volumeMounts:
+            - name: secret-store
+              mountPath: /mnt/secrets-store
+              readOnly: true
       imagePullSecrets:
         - name: regcred

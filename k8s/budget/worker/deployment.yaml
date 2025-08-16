@@ -21,7 +21,7 @@ spec:
               secretProviderClass: 'worker-vault'
       containers:
         - name: backend-worker-container
-          image: registry.timo-hermans.nl/budget-worker:20250808.1
+          image: registry.timo-hermans.nl/budget-worker:20250807.1
           envFrom:
             - secretRef:
                 name: worker-secret

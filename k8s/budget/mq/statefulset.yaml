@@ -14,13 +14,28 @@ spec:
       labels:
         app: mq-budget
     spec:
+      initContainers:
+        - name: merge-config
+          image: alpine
+          command:
+            - sh
+            - -c
+            - |
+              echo "default_user = $(cat /etc/secrets/default_user)" > /etc/rabbitmq/rabbitmq.conf
+              echo "default_password = $(cat /etc/secrets/default_password)" >> /etc/rabbitmq/rabbitmq.conf
+              echo "generated rabbitmq.conf"
+              chmod 644 /etc/rabbitmq/rabbitmq.conf
+          volumeMounts:
+            - name: mq-vault
+              mountPath: /etc/secrets
+              readOnly: true
       containers:
         - name: rabbitmq
           image: rabbitmq:3
           ports:
             - containerPort: 5672
           volumeMounts:
-            - name: rabbitmq.conf
+            - name: secrets-store
               mountPath: /etc/rabbitmq
               readOnly: true
           resources:
@@ -31,7 +46,7 @@ spec:
               memory: 1Gi
               cpu: 500m
       volumes:
-        - name: rabbitmq.conf
+        - name: secrets-store
           csi:
             driver: 'secrets-store.csi.k8s.io'
             readOnly: true
