@@ -1,0 +1,6 @@
+resources:
+  - db
+  - mq
+  - backend
+  - worker
+  - frontend

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-budget
+  namespace: budget
+spec:
+  ports:
+    - port: 5432
+  selector:
+    app: db-budget

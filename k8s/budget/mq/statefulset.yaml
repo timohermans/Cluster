@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mq-budget
+  namespace: budget
+spec:
+  selector:
+    matchLabels:
+      app: mq-budget
+  serviceName: mq-budget
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mq-budget
+    spec:
+      containers:
+        - name: rabbitmq
+          image: rabbitmq:3
+          ports:
+            - containerPort: 5672
+          volumeMounts:
+            - name: rabbitmq.conf
+              mountPath: /etc/rabbitmq
+              readOnly: true
+          resources:
+            requests:
+              memory: 512Mi
+              cpu: 250m
+            limits:
+              memory: 1Gi
+              cpu: 500m
+      volumes:
+        - name: rabbitmq.conf
+          csi:
+            driver: 'secrets-store.csi.k8s.io'
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: 'mq-vault'

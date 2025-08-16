@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mq-budget
+  namespace: budget
+spec:
+  selector:
+    app: mq-budget
+  ports:
+  - port: 80
+    targetPort: 5672

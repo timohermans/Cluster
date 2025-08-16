@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db-budget
+  namespace: budget
+spec:
+  selector:
+    matchLabels:
+      app: db-budget
+  serviceName: db-budget
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: db-budget
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:17
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - secretRef:
+                name: db-secrets
+            - configMapRef:
+                name: db-config-map
+          volumeMounts:
+            - name: db-pvc
+              mountPath: /var/lib/postgresql/data
+            - name: secret-store
+              mountPath: /mnt/secrets-store
+              readOnly: true
+      volumes:
+        - name: secret-store
+          csi:
+            driver: 'secrets-store.csi.k8s.io'
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: 'db-vault'
+  volumeClaimTemplates:
+    - metadata:
+        name: db-pvc
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi
