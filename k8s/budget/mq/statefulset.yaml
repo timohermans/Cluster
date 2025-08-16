@@ -29,13 +29,15 @@ spec:
             - name: secrets-store
               mountPath: /etc/secrets
               readOnly: true
+            - name: config-volume
+              mountPath: /etc/rabbitmq
       containers:
         - name: rabbitmq
           image: rabbitmq:3
           ports:
             - containerPort: 5672
           volumeMounts:
-            - name: secrets-store
+            - name: config-volume
               mountPath: /etc/rabbitmq
               readOnly: true
           resources:
@@ -52,3 +54,5 @@ spec:
             readOnly: true
             volumeAttributes:
               secretProviderClass: 'mq-vault'
+        - name: config-volume
+          emptyDir: {}
