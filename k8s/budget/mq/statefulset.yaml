@@ -22,7 +22,7 @@ spec:
             - -c
             - |
               echo "default_user = $(cat /etc/secrets/default_user)" > /etc/rabbitmq/rabbitmq.conf
-              echo "default_password = $(cat /etc/secrets/default_password)" >> /etc/rabbitmq/rabbitmq.conf
+              echo "default_pass = $(cat /etc/secrets/default_password)" >> /etc/rabbitmq/rabbitmq.conf
               echo "generated rabbitmq.conf"
               chmod 644 /etc/rabbitmq/rabbitmq.conf
           volumeMounts:
