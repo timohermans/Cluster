@@ -24,7 +24,7 @@ spec:
           image: registry.timo-hermans.nl/budget-worker:20250808.1
           envFrom:
             - secretRef:
-                name: backend-secret
+                name: worker-secret
           resources:
             requests:
               memory: "128Mi"
