@@ -26,7 +26,7 @@ spec:
               echo "generated rabbitmq.conf"
               chmod 644 /etc/rabbitmq/rabbitmq.conf
           volumeMounts:
-            - name: mq-vault
+            - name: secrets-store
               mountPath: /etc/secrets
               readOnly: true
       containers:
