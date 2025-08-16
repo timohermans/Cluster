@@ -7,5 +7,5 @@ spec:
   selector:
     app: mq-budget
   ports:
-  - port: 80
+  - port: 5672
     targetPort: 5672
