@@ -35,7 +35,7 @@ spec:
               memory: "256Mi"
               cpu: "250m"
           ports:
-            - containerPort: 3000
+            - containerPort: 8080
           volumeMounts:
             - name: secret-store
               mountPath: /mnt/secrets-store
