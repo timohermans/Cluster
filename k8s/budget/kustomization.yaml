@@ -1,4 +1,5 @@
 resources:
+  - shared
   - db
   - mq
   - backend

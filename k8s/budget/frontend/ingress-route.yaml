@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: budget
+  namespace: budget
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`budget.timo-hermans.nl`)
+      priority: 10
+      services:
+        - name: budget-frontend
+          port: 80
+  tls:
+    certResolver: default
