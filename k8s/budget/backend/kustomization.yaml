@@ -1,5 +1,6 @@
 resources:
   - secret-provider.yaml
+  - config-map.yaml
   - config-map-job.yaml
   - job.yaml
   - deployment.yaml

@@ -21,10 +21,12 @@ spec:
               secretProviderClass: 'backend-vault'
       containers:
         - name: backend
-          image: registry.timo-hermans.nl/budget-api:20250808.1
+          image: registry.timo-hermans.nl/budget-api:20250816.1
           envFrom:
             - secretRef:
                 name: backend-secret
+            - configMapRef:
+                name: backend-config-map
           resources:
             requests:
               memory: "128Mi"

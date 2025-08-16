@@ -25,6 +25,8 @@ spec:
           envFrom:
             - secretRef:
                 name: worker-secret
+            - configMapRef:
+                name: worker-config-map
           resources:
             requests:
               memory: "128Mi"

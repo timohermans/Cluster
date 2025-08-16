@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config-map
+  namespace: budget
+data:
+  MessageBus__Host: "mq-budget"
