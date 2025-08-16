@@ -10,7 +10,7 @@ spec:
     - kind: Rule
       match: Host(`budget.timo-hermans.nl`)
       services:
-        - name: budget-frontend
+        - name: frontend
           port: 80
   tls:
     certResolver: default
