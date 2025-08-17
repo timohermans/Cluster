@@ -19,8 +19,7 @@ spec:
               secretProviderClass: 'backend-vault'
       containers:
       - name: ef-migrations
-        image: registry.timo-hermans.nl/budget-api-migrations:20250808.1
-        command: ["dotnet", "ef", "database", "update"]
+        image: registry.timo-hermans.nl/budget-migrations-runner:20250817.3
         envFrom:
         - secretRef:
             name: backend-secret
