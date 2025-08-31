@@ -21,7 +21,7 @@ spec:
               secretProviderClass: 'backend-vault'
       containers:
         - name: backend
-          image: registry.timo-hermans.nl/budget-api:2025.8.2
+          image: registry.timo-hermans.nl/budget-api:2025.8.31.3
           envFrom:
             - secretRef:
                 name: backend-secret
