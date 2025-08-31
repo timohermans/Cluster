@@ -19,7 +19,7 @@ spec:
               secretProviderClass: 'backend-vault'
       containers:
       - name: ef-migrations
-        image: registry.timo-hermans.nl/budget-migrations-runner:20250817.3
+        image: registry.timo-hermans.nl/budget-migrations-runner:2025.8.31.1
         envFrom:
         - secretRef:
             name: backend-secret
