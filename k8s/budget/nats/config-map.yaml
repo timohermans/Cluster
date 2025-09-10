@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nats-config
+  namespace: budget
+data:
+  nats.conf: |
+    port: 4222
+    authorization {
+      users = [
+        { user: "{{USERNAME}}", password: "{{PASSWORD}}" }
+      ]
+    }

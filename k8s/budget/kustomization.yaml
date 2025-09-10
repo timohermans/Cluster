@@ -2,6 +2,7 @@ resources:
   - shared
   - db
   - mq
+  - nats
   - backend
   - worker
   - frontend
