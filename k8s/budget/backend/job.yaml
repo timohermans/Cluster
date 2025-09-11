@@ -19,7 +19,7 @@ spec:
               secretProviderClass: 'backend-vault'
         - name: appsettings-template
           configMap:
-            name: backend-config-map
+            name: backend-db-migrations-configmap
         - name: appsettings-final
           emptyDir: {}
       initContainers:
