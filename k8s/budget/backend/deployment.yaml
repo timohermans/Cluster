@@ -36,7 +36,6 @@ spec:
               sed -i "s/{{natsConnectionString}}/nats:\/\/$(cat /mnt/secrets-store/natsUsername):$(cat /mnt/secrets-store/natsPassword)@nats:4222/" /app/appsettings.Production.json
               sed -i "s/{{authAuthority}}/$(cat /mnt/secrets-store/authAuthority)/" /app/appsettings.Production.json
               sed -i "s/{{authIssuer}}/$(cat /mnt/secrets-store/authIssuer)/" /app/appsettings.Production.json
-              sed -i "s/{{authIssuer}}/$(cat /mnt/secrets-store/authIssuer)/" /app/appsettings.Production.json
           volumeMounts:
             - name: secret-store
               mountPath: /mnt/secrets-store
