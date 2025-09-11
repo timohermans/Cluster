@@ -39,7 +39,7 @@ spec:
               sed -i "s/{{authIssuer}}/$(cat /mnt/secrets-store/authIssuer)/" /app/appsettings.Production.json
       containers:
         - name: backend
-          image: registry.timo-hermans.nl/budget-api:2025.8.31.3
+          image: registry.timo-hermans.nl/budget-api:2025.9.11.5
           envFrom:
             - secretRef:
                 name: backend-secret
