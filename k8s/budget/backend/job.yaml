@@ -42,7 +42,7 @@ spec:
               mountPath: /app
       containers:
       - name: ef-migrations
-        image: registry.timo-hermans.nl/budget-migrations-runner:2025.8.31.2
+        image: registry.timo-hermans.nl/budget-migrations-runner:2025.9.11.3
         envFrom:
         - secretRef:
             name: backend-secret
