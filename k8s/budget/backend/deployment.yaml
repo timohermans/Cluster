@@ -49,11 +49,6 @@ spec:
       containers:
         - name: backend
           image: registry.timo-hermans.nl/budget-api:2025.9.11.5
-          envFrom:
-            - secretRef:
-                name: backend-secret
-            - configMapRef:
-                name: backend-config-map
           resources:
             requests:
               memory: "128Mi"
