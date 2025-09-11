@@ -58,6 +58,9 @@ spec:
           ports:
             - containerPort: 8080
           volumeMounts:
+            - name: secret-store
+              mountPath: /mnt/secrets-store
+              readonly: true
             - name: appsettings-final
               mountPath: /app/appsettings.Production.json
               subPath: appsettings.Production.json
