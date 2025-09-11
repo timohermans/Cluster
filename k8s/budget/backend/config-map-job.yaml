@@ -4,5 +4,9 @@ metadata:
   name: backend-db-migrations-configmap
   namespace: budget
 data:
-  Serilog__MinimumLevel__Override__Microsoft: Information
-  Serilog__MinimumLevel__Override__System: Information
+  appsettings.json: |
+    {
+      "ConnectionStrings": {
+        "budgetdb": "{{dbConnectionString}}"
+      }   
+    }

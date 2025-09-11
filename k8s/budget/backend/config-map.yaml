@@ -4,4 +4,15 @@ metadata:
   name: backend-config-map
   namespace: budget
 data:
-  MessageBus__Host: "mq-budget"
+  appsettings.Production.json: |
+    {
+      "ConnectionStrings": {
+        "budgetdb": "{{dbConnectionString}}",
+        "nats": "{{natsConnectionString}}"
+      },
+      "Authentication": {
+        "Authority": "{{authAuthority}}",
+        "Audiences": ["{{authIssuer}}"],
+        "Issuer": "{{authIssuer}}"
+      },
+    }

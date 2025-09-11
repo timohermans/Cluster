@@ -17,6 +17,29 @@ spec:
             readOnly: true
             volumeAttributes:
               secretProviderClass: 'backend-vault'
+        - name: appsettings-template
+          configMap:
+            name: backend-config-map
+        - name: appsettings-final
+          emptyDir: {}
+      initContainers:
+        - name: appsettings-prep
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              cp /template/appsettings.json /app/appsettings.json
+              sed -i "s/{{dbConnectionString}}/$(cat /mnt/secrets-store/dbConnectionString)/" /app/appsettings.json
+          volumeMounts:
+            - name: secret-store
+              mountPath: /mnt/secrets-store
+              readonly: true
+            - name: appsettings-template
+              mountPath: /template
+              readOnly: true
+            - name: appsettings-final
+              mountPath: /app
       containers:
       - name: ef-migrations
         image: registry.timo-hermans.nl/budget-migrations-runner:2025.8.31.2
@@ -26,9 +49,9 @@ spec:
         - configMapRef:
             name: backend-db-migrations-configmap
         volumeMounts:
-        - name: secret-store
-          mountPath: /mnt/secrets-store
-          readOnly: true
+        - name: appsettings-final
+          mountPath: /app/appsettings.json
+          subPath: appsettings.json
       restartPolicy: Never
       imagePullSecrets:
       - name: regcred
