@@ -34,7 +34,7 @@ spec:
               cp /template/appsettings.Production.json /app/appsettings.Production.json
               sed -i "s/{{dbConnectionString}}/$(cat /mnt/secrets-store/dbConnectionString)/" /app/appsettings.Production.json
               sed -i "s/{{natsConnectionString}}/nats:\/\/$(cat /mnt/secrets-store/natsUsername):$(cat /mnt/secrets-store/natsPassword)@nats:4222/" /app/appsettings.Production.json
-              sed -i "s/{{authAuthority}}/$(cat /mnt/secrets-store/authAuthority)/" /app/appsettings.Production.json
+              sed -i "s|{{authAuthority}}|$(cat /mnt/secrets-store/authAuthority)|" /app/appsettings.Production.json
               sed -i "s/{{authIssuer}}/$(cat /mnt/secrets-store/authIssuer)/" /app/appsettings.Production.json
           volumeMounts:
             - name: secret-store
