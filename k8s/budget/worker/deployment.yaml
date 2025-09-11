@@ -19,6 +19,30 @@ spec:
             readOnly: true
             volumeAttributes:
               secretProviderClass: 'worker-vault'
+        - name: appsettings-template
+          configMap:
+            name: worker-config-map
+        - name: appsettings-final
+          emptyDir: {}
+      initContainers:
+        - name: appsettings-prep
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              cp /template/appsettings.Production.json /app/appsettings.Production.json
+              sed -i "s/{{dbConnectionString}}/$(cat /mnt/secrets-store/dbConnectionString)/" /app/appsettings.Production.json
+              sed -i "s/{{natsConnectionString}}/nats:\/\/$(cat /mnt/secrets-store/natsUsername):$(cat /mnt/secrets-store/natsPassword)@nats:4222/" /app/appsettings.Production.json
+          volumeMounts:
+            - name: secret-store
+              mountPath: /mnt/secrets-store
+              readonly: true
+            - name: appsettings-template
+              mountPath: /template
+              readOnly: true
+            - name: appsettings-final
+              mountPath: /app
       containers:
         - name: backend-worker-container
           image: registry.timo-hermans.nl/budget-worker:2025.8.31.4
@@ -37,8 +61,8 @@ spec:
           ports:
             - containerPort: 8080
           volumeMounts:
-            - name: secret-store
-              mountPath: /mnt/secrets-store
-              readOnly: true
+            - name: appsettings-final
+              mountPath: /app/appsettings.Production.json
+              subPath: appsettings.Production.json
       imagePullSecrets:
         - name: regcred
