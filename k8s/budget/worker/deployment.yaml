@@ -45,7 +45,7 @@ spec:
               mountPath: /app
       containers:
         - name: backend-worker-container
-          image: registry.timo-hermans.nl/budget-worker:2025.9.11.6
+          image: registry.timo-hermans.nl/budget-worker:2025.10.10.7
           envFrom:
             - secretRef:
                 name: worker-secret
