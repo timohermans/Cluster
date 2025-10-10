@@ -42,7 +42,7 @@ spec:
               mountPath: /app
       containers:
       - name: ef-migrations
-        image: registry.timo-hermans.nl/budget-migrations-runner:2025.9.11.3
+        image: registry.timo-hermans.nl/budget-migrations-runner:2025.10.10.4
         volumeMounts:
         - name: appsettings-final
           mountPath: /app/appsettings.json
