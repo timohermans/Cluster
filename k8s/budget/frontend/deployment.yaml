@@ -21,7 +21,7 @@ spec:
               secretProviderClass: 'frontend-vault'
       containers:
         - name: frontend
-          image: registry.timo-hermans.nl/budget-app:2026.2.1.20
+          image: registry.timo-hermans.nl/budget-app:2026.2.13.21
           envFrom:
             - secretRef:
                 name: frontend-secret
