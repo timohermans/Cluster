@@ -9,9 +9,9 @@ spec:
   routes:
     - kind: Rule
       match: Host(`budget-api.timo-hermans.nl`)
-      middleware:
-      - name: backend-cors
-        namespace: budget
+      # middleware:
+      # - name: backend-cors
+      #   namespace: budget
       services:
         - name: backend-budget
           port: 80
