@@ -47,7 +47,7 @@ spec:
               mountPath: /app
       containers:
         - name: backend
-          image: registry.timo-hermans.nl/budget-api:2026.3.27.12
+          image: registry.timo-hermans.nl/budget-api:2026.3.27.1
           resources:
             requests:
               memory: "128Mi"
