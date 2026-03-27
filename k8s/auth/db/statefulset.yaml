@@ -19,6 +19,20 @@ spec:
           image: postgres:17
           ports:
             - containerPort: 5432
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "2"
+              memory: "2Gi"
+          env:
+            - name: POSTGRES_MAX_CONNECTIONS
+              value: "100"
+            - name: POSTGRES_SHARED_BUFFERS
+              value: "256MB"
+            - name: POSTGRES_EFFECTIVE_CACHE_SIZE
+              value: "512MB"
           envFrom:
             - secretRef:
                 name: keycloak-db-vault-secrets

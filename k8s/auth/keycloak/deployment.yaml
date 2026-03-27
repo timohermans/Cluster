@@ -18,11 +18,14 @@ spec:
         command: ["/opt/keycloak/bin/kc.sh", "start"]
         resources:
           requests:
-            cpu: "500m"
-            memory: "1Gi"
-          limits:
-            cpu: "2"
+            cpu: "1"
             memory: "2Gi"
+          limits:
+            cpu: "4"
+            memory: "4Gi"
+        env:
+          - name: JAVA_OPTS
+            value: "-Xms1g -Xmx2g -XX:+UseG1GC -XX:+UseStringDeduplication -Djava.net.preferIPv4Stack=true"
         envFrom:
           - configMapRef:
               name: keycloak-config
