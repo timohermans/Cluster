@@ -13,6 +13,7 @@ data:
       "Authentication": {
         "Authority": "{{authAuthority}}",
         "Audiences": ["{{authIssuer}}"],
-        "Issuer": "{{authIssuer}}"
+        "Issuer": "{{authIssuer}}",
+        "AllowedOrigins": ["https://budget.timo-hermans.nl", "https://budget2.timo-hermans.nl"]
       },
     }

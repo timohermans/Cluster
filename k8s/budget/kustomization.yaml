@@ -6,3 +6,4 @@ resources:
   - backend
   - worker
   - frontend
+  - frontend-angular
