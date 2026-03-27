@@ -2,7 +2,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: budget-angular
-  namespace: budget-angular
+  namespace: budget
 spec:
   entryPoints:
     - websecure
