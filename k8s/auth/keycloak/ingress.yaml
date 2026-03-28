@@ -8,6 +8,15 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls.certresolver: default
+    # ⚡ CRITICAL: Increase timeouts for Keycloak
+    traefik.ingress.kubernetes.io/service.serversscheme: http
+    traefik.ingress.kubernetes.io/response-forwarding: "true"
+    # Backend connection timeout (default is 60s)
+    traefik.ingress.kubernetes.io/backend-connection-timeout: "120s"
+    # Forwarding timeout (from Traefik to Keycloak)
+    traefik.ingress.kubernetes.io/forwarding-timeout: "120s"
+    # Idle connection timeout (keep-alive)
+    traefik.ingress.kubernetes.io/keep-alive-timeout: "120s"
 spec:
   ingressClassName: traefik
   rules:
