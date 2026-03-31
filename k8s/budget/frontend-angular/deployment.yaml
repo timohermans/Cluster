@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend-angular
-          image: registry.timo-hermans.nl/budget-angular:2026.3.29.10
+          image: registry.timo-hermans.nl/budget-angular:2026.3.31.11
           resources:
             requests:
               memory: "128Mi"
