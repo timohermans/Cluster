@@ -1,4 +1,0 @@
-resources:
-  - secret-provider.yaml
-  - statefulset.yaml
-  - service.yaml

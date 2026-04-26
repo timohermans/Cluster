@@ -1,4 +1,2 @@
 resources:
-  - config-map.yaml
-  - secret-provider.yaml
   - deployment.yaml

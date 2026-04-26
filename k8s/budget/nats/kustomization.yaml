@@ -1,5 +1,3 @@
 resources:
-  - secrets-provider.yaml
-  - config-map.yaml
   - deployment.yaml
   - service.yaml

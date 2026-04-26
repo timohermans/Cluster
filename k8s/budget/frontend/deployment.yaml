@@ -12,13 +12,6 @@ spec:
       labels:
         app: frontend
     spec:
-      volumes:
-        - name: secret-store
-          csi:
-            driver: 'secrets-store.csi.k8s.io'
-            readOnly: true
-            volumeAttributes:
-              secretProviderClass: 'frontend-vault'
       containers:
         - name: frontend
           image: registry.timo-hermans.nl/budget-app:2026.2.13.21
@@ -36,9 +29,5 @@ spec:
               cpu: "250m"
           ports:
             - containerPort: 8080
-          volumeMounts:
-            - name: secret-store
-              mountPath: /mnt/secrets-store
-              readOnly: true
       imagePullSecrets:
         - name: regcred

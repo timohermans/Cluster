@@ -14,43 +14,9 @@ spec:
         app: nats
     spec:
       volumes:
-        - name: vault-secrets
-          csi:
-            driver: secrets-store.csi.k8s.io
-            readOnly: true
-            volumeAttributes:
-              secretProviderClass: nats-vault
-        - name: nats-config-template
-          configMap:
-            name: nats-config
-        - name: nats-config-final
-          emptyDir: {}
-      initContainers:
-        - name: config-prep
-          image: busybox:1.36
-          command:
-            - sh
-            - -c
-            - |
-              cp /template/nats.conf /work/nats.conf
-              sed -i "s/{{USERNAME}}/$(cat /mnt/secrets-store/USERNAME)/" /work/nats.conf
-              sed -i "s/{{PASSWORD}}/$(cat /mnt/secrets-store/PASSWORD)/" /work/nats.conf
-          volumeMounts:
-            - name: vault-secrets
-              mountPath: /mnt/secrets-store
-              readOnly: true
-            - name: nats-config-template
-              mountPath: /template
-              readOnly: true
-            - name: nats-config-final
-              mountPath: /work
-          resources:
-            requests:
-              cpu: 50m
-              memory: 32Mi
-            limits:
-              cpu: 100m
-              memory: 64Mi
+        - name: nats-config
+          secret:
+            secretName: nats
       containers:
         - name: nats
           image: nats:2.11.9-alpine
@@ -58,8 +24,9 @@ spec:
           ports:
             - containerPort: 4222
           volumeMounts:
-            - name: nats-config-final
+            - name: nats-config
               mountPath: /etc/nats-config
+              subPath: nats.conf
               readOnly: true
           resources:
             requests:

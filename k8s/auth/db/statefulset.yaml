@@ -35,7 +35,7 @@ spec:
               value: "512MB"
           envFrom:
             - secretRef:
-                name: keycloak-db-vault-secrets
+                name: keycloak-db-secrets
             - configMapRef:
                 name: auth-db-config-map
           volumeMounts:
