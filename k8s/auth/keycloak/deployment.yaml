@@ -33,14 +33,3 @@ spec:
               name: keycloak-vault
         ports:
         - containerPort: 8080
-        volumeMounts:
-        - name: secret-store
-          mountPath: '/mnt/secrets-store'
-          readOnly: true
-      volumes:
-        - name: secret-store
-          csi:
-            driver: 'secrets-store.csi.k8s.io'
-            readOnly: true
-            volumeAttributes:
-              secretProviderClass: 'keycloak-vault'
