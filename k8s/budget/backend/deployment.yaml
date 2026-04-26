@@ -30,7 +30,7 @@ spec:
             - containerPort: 8080
           volumeMounts:
             - name: appsettings-secret
-              mountPath: /app
+              mountPath: /app/appsettings.Production.json
               subPath: appsettings.Production.json
               readonly: true
       imagePullSecrets:
