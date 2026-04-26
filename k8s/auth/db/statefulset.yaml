@@ -41,16 +41,6 @@ spec:
           volumeMounts:
             - name: auth-db-pvc
               mountPath: /var/lib/postgresql/data
-            - name: secret-store
-              mountPath: /mnt/secrets-store
-              readOnly: true
-      volumes:
-        - name: secret-store
-          csi:
-            driver: 'secrets-store.csi.k8s.io'
-            readOnly: true
-            volumeAttributes:
-              secretProviderClass: 'keycloak-db-vault'
   volumeClaimTemplates:
     - metadata:
         name: auth-db-pvc
