@@ -16,14 +16,6 @@ spec:
         - name: appsettings-secret
           secret:
             secretName: budget-backend
-      initContainers:
-        - name: appsettings-prep
-          image: busybox
-          volumeMounts:
-            - name: appsettings-secret
-              mountPath: /app
-              subPath: appsettings.Production.json
-              readonly: true
       containers:
         - name: backend
           image: registry.timo-hermans.nl/budget-api:2026.3.27.21
@@ -36,5 +28,10 @@ spec:
               cpu: "250m"
           ports:
             - containerPort: 8080
+          volumeMounts:
+            - name: appsettings-secret
+              mountPath: /app
+              subPath: appsettings.Production.json
+              readonly: true
       imagePullSecrets:
         - name: regcred
