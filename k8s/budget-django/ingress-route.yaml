@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: budget-django
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`budget3.timo-hermans.nl`)
+      services:
+        - name: budget-django
+          port: 80
+  tls:
+    certResolver: default
+    domains:
+      - main: budget3.timo-hermans.nl
