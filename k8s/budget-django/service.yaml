@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: budget-django
+  name: budget-django-svc
 spec:
   selector:
-    app: budget-django
+    app: web
   ports:
   - port: 80
     targetPort: 8000
