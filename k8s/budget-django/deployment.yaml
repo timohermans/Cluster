@@ -34,3 +34,4 @@ spec:
               readOnly: true
       imagePullSecrets:
         - name: regcred
+      revisionHistoryLimit: 2
