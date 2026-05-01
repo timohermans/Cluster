@@ -6,6 +6,7 @@ spec:
   selector:
     matchLabels:
       app: web
+  revisionHistoryLimit: 2
   template:
     metadata:
       labels:
@@ -34,4 +35,3 @@ spec:
               readOnly: true
       imagePullSecrets:
         - name: regcred
-      revisionHistoryLimit: 2
