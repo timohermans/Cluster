@@ -24,6 +24,8 @@ spec:
         - name: auth
           mountPath: /auth
         env:
+        - name: REGISTRY_STORAGE_DELETE_ENABLED
+          value: 'true'
         - name: REGISTRY_AUTH
           value: "htpasswd"
         - name: REGISTRY_AUTH_HTPASSWD_REALM
