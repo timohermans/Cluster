@@ -18,7 +18,10 @@ spec:
             secretName: web-secrets
       containers:
         - name: web
-          image: registry.timo-hermans.nl/budget-django:beta
+          env:
+            - name: SECURE_SSL_REDIRECT
+              value: 'True'
+          image: registry.timo-hermans.nl/budget-django:beta2
           resources:
             requests:
               memory: "128Mi"
