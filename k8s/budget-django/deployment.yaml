@@ -21,7 +21,7 @@ spec:
           env:
             - name: SECURE_SSL_REDIRECT
               value: 'True'
-          image: registry.timo-hermans.nl/budget-django:beta9
+          image: registry.timo-hermans.nl/budget-django:beta10
           resources:
             requests:
               memory: "1Gi"
