@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: word-picker-migrations
-        image: registry.timo-hermans.nl/word-picker-migrate:beta-1
+        image: registry.timo-hermans.nl/word-picker-migrate:beta-2
         envFrom:
           - secretRef:
               name: word-picker-secrets
