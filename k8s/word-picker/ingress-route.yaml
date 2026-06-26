@@ -1,0 +1,18 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: word-picker-route
+  namespace: word-picker
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`word-picker.timo-hermans.nl`)
+      services:
+        - name: word-picker-service
+          port: 80
+  tls:
+    certResolver: default
+    domains:
+      - main: word-picker.timo-hermans.nl

@@ -1,0 +1,5 @@
+resources:
+  - job.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress-route.yaml

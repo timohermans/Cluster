@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: word-picker-migrations
+  namespace: word-picker
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  backoffLimit: 3
+  ttlSecondsAfterFinished: 600  
+  template:
+    spec:
+      containers:
+      - name: word-picker-migrations
+        image: registry.timo-hermans.nl/word-picker-migrate:beta-1
+        envFrom:
+          - secretRef:
+              name: word-picker-secrets
+      restartPolicy: Never
+      imagePullSecrets:
+      - name: regcred

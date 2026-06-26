@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: word-picker-service
+  namespace: word-picker
+spec:
+  selector:
+    app: word-picker
+  ports:
+  - port: 80
+    targetPort: 44
