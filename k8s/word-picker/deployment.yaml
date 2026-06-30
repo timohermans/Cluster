@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: word-picker
-          image: registry.timo-hermans.nl/word-picker:beta-4
+          image: registry.timo-hermans.nl/word-picker:beta-5
           envFrom:
             - secretRef:
                 name: word-picker-secrets
